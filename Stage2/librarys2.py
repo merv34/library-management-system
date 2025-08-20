@@ -133,20 +133,20 @@ class Library:
     
     def _save_books(self):
         try:
-            print(f"💾 Kaydediliyor: {self.filename}")  # Debug
+            print(f"Saving: {self.filename}")
             with open(self.filename, 'w', encoding='utf-8') as f:
                 data = [book.to_dict() for book in self.books.values()]
                 json.dump(data, f, indent=2, ensure_ascii=False)
-            print(f"✅ {len(data)} kitap başarıyla kaydedildi")
-            print("Gerçekten dosya var mı?:", os.path.exists(self.filename))
-            print("Gerçek dosya yolu:", os.path.abspath(self.filename))
+            print(f"{len(data)} books saved successfully")
+            print("File exists?:", os.path.exists(self.filename))
+            print("Absolute file path:", os.path.abspath(self.filename))
         except Exception as e:
-            print(f"Kayıt hatası: {str(e)}")
-            raise RuntimeError(f"Dosya yazılamadı: {self.filename}")
+            print(f"Save error: {str(e)}")
+            raise RuntimeError(f"Failed to save file: {self.filename}")
 
     def _load_books(self):
         if os.path.exists(self.filename):
-            print(f"📖 Yükleniyor: {self.filename}")  # Debug
+            print(f"Loading: {self.filename}")
             try:
                 with open(self.filename, 'r', encoding='utf-8') as f:
                     books_data = json.load(f)
@@ -158,12 +158,13 @@ class Library:
                         )
                         for book in books_data
                     }
+                    
                     for isbn, book_data in zip(self.books.keys(), books_data):
                         self.books[isbn].available = book_data.get('available', True)
-                print(f"🔍 {len(self.books)} kitap yüklendi")
+                print(f"{len(self.books)} books loaded")
             except Exception as e:
-                print(f"⚠ Yükleme hatası: {str(e)}")
+                print(f"Loading error: {str(e)}")
                 self.books = {}
         else:
-            print("ℹ Dosya bulunamadı, yeni kütüphane oluşturuluyor")
+            print("File not found, creating new library")
             self.books = {}

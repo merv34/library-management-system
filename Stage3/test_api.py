@@ -7,8 +7,8 @@ import os
 client = TestClient(app)
 
 TEST_BOOK = {
-    "title": "Test Kitap",
-    "authors": ["Test Yazar"],
+    "title": "Test Book",
+    "authors": ["Test Author"],
     "isbn": "1234567890"
 }
 TEST_ISBN = "9789753425426" 

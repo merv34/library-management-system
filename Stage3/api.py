@@ -28,7 +28,7 @@ JSON_FILE = os.path.abspath(os.path.join(current_dir, "library_data.json"))
 if not os.path.exists(JSON_FILE):
     with open(JSON_FILE, "w", encoding="utf-8") as f:
         f.write("[]")
-print(f"🛠️ Library file path: {JSON_FILE}")
+print(f"Library file path: {JSON_FILE}")
 lib = Library(JSON_FILE)
 
 class BookModel(BaseModel):

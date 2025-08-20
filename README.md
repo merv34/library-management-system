@@ -35,7 +35,7 @@ This project implements a complete library management system across three stages
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/library-management-system.git
+git clone https://github.com/merv34/library-management-system.git
 cd library-management-system
 ```
 
